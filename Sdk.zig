@@ -710,7 +710,7 @@ pub fn alignApk(sdk: Sdk, input_apk_file: []const u8, output_apk_file: []const u
 }
 
 pub fn installApp(sdk: Sdk, apk_file: std.build.FileSource) *Step {
-    const step = sdk.b.addSystemCommand(&[_][]const u8{ sdk.system_tools.adb, "install" });
+    const step = sdk.b.addSystemCommand(&[_][]const u8{ sdk.system_tools.adb, "install", "-r", "-d" });
     step.addFileSourceArg(apk_file);
     return &step.step;
 }
